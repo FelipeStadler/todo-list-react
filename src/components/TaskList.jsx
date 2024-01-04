@@ -1,7 +1,7 @@
 // CSS
 import styles from './TaskList.module.css'
 
-export default function TaskList({ taskList }) {
+export default function TaskList({ taskList, handleDelete, handleEdit }) {
   return (
     <>
       {taskList.length > 0 ? (
@@ -12,8 +12,8 @@ export default function TaskList({ taskList }) {
               <p>Dificuldade: {task.difficulty}</p>
             </div>
             <div>
-              <span>&#8665;</span>{/* Trocar por um SVG */}
-              <span>&#8855;</span>
+              <span onClick={() => handleEdit()}>&#8665;</span>{/* Trocar por um SVG */}
+              <span onClick={() => handleDelete(task.id)}>&#8855;</span>
             </div>
           </div>
         ))
