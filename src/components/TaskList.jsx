@@ -12,7 +12,7 @@ export default function TaskList({ taskList, handleDelete, handleEdit }) {
               <p>Dificuldade: {task.difficulty}</p>
             </div>
             <div>
-              <span onClick={() => handleEdit()}>&#8665;</span>{/* Trocar por um SVG */}
+              <span onClick={() => handleEdit(task)}>&#8665;</span>{/* Trocar por um SVG */}
               <span onClick={() => handleDelete(task.id)}>&#8855;</span>
             </div>
           </div>

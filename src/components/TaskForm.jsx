@@ -3,22 +3,33 @@ import { useState, useEffect } from 'react'
 // CSS
 import styles from './TaskForm.module.css'
 
-export default function TaskForm({ btnText, taskList, setTaskList }) {
-
+export default function TaskForm({ btnText, taskList, setTaskList, task, handleUpdate }) {
   const [id, setId] = useState(0)
   const [title, setTitle] = useState('')
   const [difficulty, setDifficulty] = useState(0)
 
+  useEffect(() => {
+    if(task) {
+      setId(task.id)
+      setTitle(task.title)
+      setDifficulty(task.difficulty)
+    }
+  }, [task])
+
   const addTaskHandler = (e) => {
     e.preventDefault()
 
-    const id = Math.floor(Math.random() * 1000)
-    const newTask = {id, title, difficulty}
-
-    setTaskList([...taskList, newTask])
-
-    setTitle('')
-    setDifficulty(0)
+    if(handleUpdate) {
+      handleUpdate(id, title, difficulty)
+    } else {
+      const id = Math.floor(Math.random() * 1000)
+      const newTask = {id, title, difficulty}
+  
+      setTaskList([...taskList, newTask])
+  
+      setTitle('')
+      setDifficulty(0)
+    }
   }
 
   const handleChange = (e) => {
