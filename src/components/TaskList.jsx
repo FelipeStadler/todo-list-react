@@ -11,10 +11,11 @@ export default function TaskList({ taskList, handleDelete, handleEdit }) {
               <h4>{task.title}</h4>
               <p>Dificuldade: {task.difficulty}</p>
             </div>
-            <div>
-              <span onClick={() => handleEdit(task)}>&#8665;</span>{/* Trocar por um SVG */}
-              <span onClick={() => handleDelete(task.id)}>&#8855;</span>
+            <div className={styles.acoes}>
+              <img src='edit.svg' onClick={() => handleEdit(task)} />
+              <img src='delete.svg' onClick={() => handleDelete(task.id)} />
             </div>
+            <br/>
           </div>
         ))
       ) : (
